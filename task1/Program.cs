@@ -16,19 +16,21 @@ if (9999 < number && number < 100000)
 {
     for (int i = 0; i <= 2; i++)
     {
-        int firstNumber = (number / 10 ^ (4 - i)) % 10;
-        int lastNumber = number % 10 ^ (1 + i);
-        if (firstNumber == lastNumber)
-        {
-            System.Console.WriteLine($"Число {number} полиндром");
-        }
-        if (firstNumber != lastNumber)
+        var firstDigit = Math.Round((number / Math.Pow(10, (4 - i)) % 10), 0);
+        var lastDigit = Math.Round(number % Math.Pow(10, (1 + i)) / Math.Pow(10, i));
+
+        if (firstDigit != lastDigit)
         {
             System.Console.WriteLine($"Число {number} не полиндром");
+            break;
+        }
+        if (firstDigit == lastDigit && i == 2)
+        {
+            System.Console.WriteLine($"Число {number} полиндром");
         }
     }
 }
 else
-{System.Console.WriteLine("Число не пятизначное");
-
+{
+    System.Console.WriteLine("Число не пятизначное");
 }
