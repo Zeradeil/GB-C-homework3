@@ -9,27 +9,26 @@ int ReadNum(string massage)
     System.Console.Write($"{massage} => ");
     return Convert.ToInt32(System.Console.ReadLine());
 }
-int Count(int number)
-{
-    int count = 0;
-    while (number > 0)
-    {
-        count++;
-        int num = number % 10;
-    }
-    return count;
-}
 
 int number = ReadNum("Введите число");
-int count = Count(number);
-System.Console.WriteLine(count);
 
-for (int i = 0; i < count / 2; i++)
+if (9999 < number && number < 100000)
 {
-    int firstNumber = number / 10 ^ (count - i);
-    int lastNumber = number % 10 ^ (1 + i);
-    if (firstNumber !=  lastNumber){
-        System.Console.WriteLine($"Число {number} не полиндром");
-        break;
+    for (int i = 0; i <= 2; i++)
+    {
+        int firstNumber = (number / 10 ^ (4 - i)) % 10;
+        int lastNumber = number % 10 ^ (1 + i);
+        if (firstNumber == lastNumber)
+        {
+            System.Console.WriteLine($"Число {number} полиндром");
+        }
+        if (firstNumber != lastNumber)
+        {
+            System.Console.WriteLine($"Число {number} не полиндром");
+        }
     }
+}
+else
+{System.Console.WriteLine("Число не пятизначное");
+
 }
